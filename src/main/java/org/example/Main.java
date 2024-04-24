@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -31,23 +32,17 @@ public class Main {
 
         System.out.println("Enter numbers separated by spaces:");
         String num = scanner.nextLine();
-        String[] numbers = num.split(" ");
+        String[] numbersAsString = num.split(" ");
+        int[] numbers = new int[numbersAsString.length];
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
 
-        for (int i = 0; i < numbers.length; i++) {
-            int number = Integer.parseInt(numbers[i]);
-            if (number < min) {
-                min = number;
-            }
-            if (number > max) {
-                max = number;
-            }
+        for (int i = 0; i < numbersAsString.length; i++) {
+            numbers[i] = Integer.parseInt(numbersAsString[i]);
         }
+        Arrays.sort(numbers);
 
-        System.out.println("Min number: " + min);
-        System.out.println("Max number: " + max);
+        System.out.println("Min number: " + numbers[0]);
+        System.out.println("Max number: " + numbers[numbers.length - 1]);
 
         scanner.close();
 
